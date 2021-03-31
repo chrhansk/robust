@@ -1,0 +1,10 @@
+{
+  "instance": "niedersachsen",
+  "settings":
+  {
+    "numBuckets": 10,
+    "sampleSize": 10,
+    "minSeconds": 10,
+    "minIterations": 10
+  }
+}

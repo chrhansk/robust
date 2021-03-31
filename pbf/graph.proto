@@ -1,0 +1,81 @@
+syntax = "proto2";
+
+package Protobuf;
+
+message Vertex {
+  required int64 id = 1;
+  required float lon = 2;
+  required float lat = 3;
+}
+
+message Edge {
+  required int64 id = 1;
+  required int64 source = 2;
+  required int64 target = 3;
+  repeated float shape = 4;
+}
+
+message Tag {
+  required string name = 1;
+  optional FloatTagValues float_values = 2;
+  optional IntTagValues int_values = 3;
+  optional DoubleTagValues double_values = 4;
+  optional LongTagValues long_values = 5;
+  optional StringTagValues string_values = 6;
+}
+
+message FloatTagValues {
+  repeated float values = 1;
+}
+
+message IntTagValues {
+  repeated int32 values = 1;
+}
+
+message DoubleTagValues {
+  repeated double values = 1;
+}
+
+message LongTagValues {
+  repeated int64 values = 1;
+}
+
+message StringTagValues {
+  repeated string values = 1;
+}
+
+message Graph {
+  repeated Vertex vertices = 1;
+  repeated Edge edges = 2;
+  repeated Tag tags = 3;
+}
+
+message Region {
+  repeated int32 vertices = 1;
+}
+
+message Partition {
+  repeated Region regions = 1;
+}
+
+message ValueVector {
+  repeated int32 values = 1;
+}
+
+message RequiredValues {
+  required IntTagValues costs = 1;
+  required IntTagValues deviations = 2;
+  required int32 deviation_size = 3;
+  required Partition partition = 4;
+  repeated ValueVector values = 5;
+}
+
+message ArcFlags {
+  repeated fixed32 flags = 2 [packed=true];
+}
+
+message BidirectionalArcFlags {
+  required Partition partition = 1;
+  required ArcFlags outgoing_flags = 2;
+  required ArcFlags incoming_flags = 3;
+}
