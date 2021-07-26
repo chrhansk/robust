@@ -13,23 +13,45 @@ This code depends on the following packages:
 - [Intel TBB](https://www.threadingbuildingblocks.org/)
 - [Google Protobuf](https://developers.google.com/protocol-buffers)
 
+You can install those packages on a Debian-based system (tested on Ubuntu focal, Debian bullseye) via
+
+```shell
+> apt update
+> apt install build-essential cmake libboost-all-dev libmetis-dev libgtest-dev libtbb-dev libprotobuf-dev
+```
+
 ## Building and testing
 
 To build and test the code, run
 
-- mkdir build
-- cd build
-- cmake .. <CMAKE_OPTIONS>
-- make
-- [make test]
+```shell
+> git clone git@github.com:chrhansk/robust.git
+Cloning into 'robust'...
+[...]
+> cd robust
+> mkdir build
+> cd build
+> cmake ..
+[...]
+-- Build files have been written to: [...]
+> make
+[...]
+[100%] Built target [...]
+> make test
+Running tests...
+[...]
+100% tests passed [...]
+```
 
 ## Running benchmarks
 
-This code includes several benchmarks, which are build
+This code includes several benchmarks, which are built
 automatically. To execute all benchmarks and collect their respective
 results, use the command
 
-- make collect
+```shell
+> make collect
+```
 
 This should produce several CSV files containing running times. Beware
 to build the code in release mode to get accurate benchmarks results.
