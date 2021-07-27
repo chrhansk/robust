@@ -44,7 +44,7 @@ public:
 namespace std
 {
   template <class T>
-  inline void hash_combine(std::size_t & seed, const T & v)
+  inline void compute_hash_combination(std::size_t & seed, const T & v)
   {
     std::hash<T> hasher;
     seed ^= hasher(v) + 0x9e3779b9 + (seed << 6) + (seed >> 2);
@@ -58,8 +58,8 @@ struct PairHash {
   template <class T1, class T2>
   std::size_t operator () (const std::pair<T1, T2> &p) const {
     result_type seed = 0;
-    std::hash_combine(seed, std::hash<T1>{}(p.first));
-    std::hash_combine(seed, std::hash<T2>{}(p.second));
+    std::compute_hash_combination(seed, std::hash<T1>{}(p.first));
+    std::compute_hash_combination(seed, std::hash<T2>{}(p.second));
 
     return seed;
   }

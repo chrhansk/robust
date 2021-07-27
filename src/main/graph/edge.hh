@@ -167,8 +167,8 @@ namespace std
     result_type operator()(argument_type const& edge) const
     {
       result_type seed = 0;
-      hash_combine(seed, edge.getSource());
-      hash_combine(seed, edge.getTarget());
+      compute_hash_combination(seed, edge.getSource());
+      compute_hash_combination(seed, edge.getTarget());
       return seed;
     }
   };
